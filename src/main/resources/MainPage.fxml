@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.3575949367088607" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.MainPageController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="542.0" prefWidth="298.0">
+         <children>
+            <VBox layoutY="97.0" prefHeight="301.0" prefWidth="268.0">
+               <children>
+                  <ImageView fx:id="lockImageView" fitHeight="541.0" fitWidth="268.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/lock.png" />
+                     </image>
+                  </ImageView>
+               </children></VBox>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="495.0" style="-fx-background-color: cyan;">
+         <children>
+            <Button fx:id="logOutBtn" layoutX="99.0" layoutY="399.0" mnemonicParsing="false" onAction="#logout" prefHeight="49.0" prefWidth="110.0" text="Log Out" />
+            <Button fx:id="addBtn" layoutX="99.0" layoutY="132.0" mnemonicParsing="false" onAction="#addNew" prefHeight="50.0" prefWidth="294.0" text="New" />
+            <Label fx:id="titleLabel" layoutX="92.0" layoutY="32.0" prefHeight="100.0" prefWidth="294.0" text="Welcome back!">
+               <font>
+                  <Font name="Bodoni MT Black" size="38.0" />
+               </font>
+            </Label>
+            <Button fx:id="generatorBtn" layoutX="99.0" layoutY="200.0" mnemonicParsing="false" onAction="#openGenerator" prefHeight="49.0" prefWidth="294.0" text="Generator" />
+            <Button fx:id="vaultBtn" layoutX="99.0" layoutY="271.0" mnemonicParsing="false" onAction="#openVault" prefHeight="49.0" prefWidth="294.0" text="Open Vault" />
+            <Button fx:id="closeAccountBtn" layoutX="276.0" layoutY="399.0" mnemonicParsing="false" onAction="#closeAccount" prefHeight="49.0" prefWidth="110.0" text="Close Account" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
