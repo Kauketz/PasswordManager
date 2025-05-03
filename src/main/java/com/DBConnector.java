@@ -124,7 +124,7 @@ public class DBConnector {
                 while (rs.next()) {
                     String domain = rs.getString("domain");
                     String username = rs.getString("username");
-                    String password = rs.getString("password"); // Decrypt the password if needed
+                    String password = rs.getString("password");
                     vaultEntries.add(new VaultEntry(domain, username, password));
                 }
             }
