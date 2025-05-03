@@ -50,7 +50,23 @@ public class MainPageController {
 
     @FXML
     private void openVault(ActionEvent e) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vault.fxml"));
+            Parent root = loader.load();
 
+            VaultController vaultController = loader.getController();
+            vaultController.setMasterUsername(master);
+            vaultController.setMasterPassword(mPassword);
+
+            Stage vaultStage = new Stage();
+            vaultStage.setTitle("Vault");
+            vaultStage.setScene(new Scene(root));
+            vaultStage.initOwner((Stage) vaultBtn.getScene().getWindow());
+            vaultStage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+            vaultStage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML

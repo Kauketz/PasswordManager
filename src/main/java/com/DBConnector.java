@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBConnector {
 
@@ -67,6 +69,102 @@ public class DBConnector {
 
                 if (rowsInserted == 0) {
                     throw new SQLException("User was not inserted into the database.");
+                }
+            }
+        }
+    }
+
+    public String getServiceUsername(String master) throws SQLException {
+        int id = getMasterIdByUsername(master);
+        String selectSql = "SELECT username FROM vault WHERE master_id = ?";
+
+        try (Connection conn = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD)) {
+            try (PreparedStatement pstmt = conn.prepareStatement(selectSql)) {
+                pstmt.setInt(1, id);
+
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    if (rs.next()) {
+                        return rs.getString("username");
+                    } else {
+                        return null;
+                    }
+                }
+            }
+        }
+    }
+
+    public String getServiceDomain(String master) throws SQLException {
+        int id = getMasterIdByUsername(master);
+        String selectSql = "SELECT domain FROM vault WHERE master_id = ?";
+
+        try (Connection conn = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD)) {
+            try (PreparedStatement pstmt = conn.prepareStatement(selectSql)) {
+                pstmt.setInt(1, id);
+
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    if (rs.next()) {
+                        return rs.getString("domain");
+                    } else {
+                        return null;
+                    }
+                }
+            }
+        }
+    }
+
+    public List<VaultEntry> getVaultEntriesByMasterId(int masterId) throws SQLException {
+        String sql = "SELECT domain, username, password FROM vault WHERE master_id = ?";
+        List<VaultEntry> vaultEntries = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD);
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, masterId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    String domain = rs.getString("domain");
+                    String username = rs.getString("username");
+                    String password = rs.getString("password"); // Decrypt the password if needed
+                    vaultEntries.add(new VaultEntry(domain, username, password));
+                }
+            }
+        }
+        return vaultEntries;
+    }
+
+    public void deleteVaultEntry(String domain, String username, String masterUsername) throws SQLException {
+        int masterId = getMasterIdByUsername(masterUsername);
+        String deleteSql = "DELETE FROM vault WHERE master_id = ? AND domain = ? AND username = ?";
+
+        try (Connection conn = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD);
+                PreparedStatement pstmt = conn.prepareStatement(deleteSql)) {
+
+            pstmt.setInt(1, masterId);
+            pstmt.setString(2, domain);
+            pstmt.setString(3, username);
+
+            int rowsDeleted = pstmt.executeUpdate();
+            if (rowsDeleted == 0) {
+                throw new SQLException("Failed to delete the vault entry.");
+            }
+        }
+    }
+
+    public String getServicePassword(String master) throws SQLException, Exception {
+        int id = getMasterIdByUsername(master);
+        String selectSql = "SELECT password FROM vault WHERE master_id = ?";
+
+        try (Connection conn = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD)) {
+            try (PreparedStatement pstmt = conn.prepareStatement(selectSql)) {
+                pstmt.setInt(1, id);
+
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    if (rs.next()) {
+                        String encryptedPassword = rs.getString("password");
+                        return PasswordHandling.decryptServicePassword(encryptedPassword, master);
+                    } else {
+                        return null;
+                    }
                 }
             }
         }
