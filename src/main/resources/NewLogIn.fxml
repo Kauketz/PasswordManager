@@ -45,9 +45,14 @@
             </Label>
             <Label fx:id="errorLabel" layoutX="62.0" layoutY="124.0" prefHeight="17.0" prefWidth="380.0" textFill="RED">
                <font>
-                  <Font name="Bodoni MT Black" size="26.0" />
+                  <Font name="Bodoni MT Black" size="14.0" />
                </font>
             </Label>
+            <TextField fx:id="domain" layoutX="108.0" layoutY="163.0" prefHeight="26.0" prefWidth="268.0" promptText="Domain">
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+            </TextField>
          </children></AnchorPane>
   </items>
 </SplitPane>

@@ -26,7 +26,7 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="495.0" style="-fx-background-color: cyan;">
          <children>
-            <Label fx:id="titleLabel" layoutX="140.0" layoutY="32.0" prefHeight="100.0" prefWidth="202.0" text="Generator">
+            <Label fx:id="titleLabel" layoutX="140.0" layoutY="20.0" prefHeight="68.0" prefWidth="202.0" text="Generator">
                <font>
                   <Font name="Bodoni MT Black" size="38.0" />
                </font>
@@ -64,8 +64,10 @@
                </font>
             </CheckBox>
             <Button fx:id="copyBtn" layoutX="279.0" layoutY="196.0" mnemonicParsing="false" onAction="#copyPassword" prefHeight="25.0" prefWidth="99.0" text="Copy" />
-            <Button fx:id="regenerateBtn" layoutX="109.0" layoutY="196.0" mnemonicParsing="false" onAction="#regeneratePassword" prefHeight="25.0" prefWidth="99.0" text="[icon]" />
-            <Button fx:id="cancelBtn" layoutX="118.0" layoutY="488.0" mnemonicParsing="false" onAction="#exitGenerator" prefHeight="25.0" prefWidth="268.0" text="Cancel" />
+            <Button fx:id="generateBtn" layoutX="109.0" layoutY="196.0" mnemonicParsing="false" onAction="#generatePassword" prefHeight="25.0" prefWidth="99.0" text="[icon]" />
+            <Button fx:id="cancelBtn" layoutX="109.0" layoutY="488.0" mnemonicParsing="false" onAction="#exitGenerator" prefHeight="25.0" prefWidth="99.0" text="Cancel" />
+            <Label fx:id="errorLabel" layoutX="31.0" layoutY="105.0" prefHeight="17.0" prefWidth="419.0" textFill="RED" />
+            <Button fx:id="acceptBtn" layoutX="279.0" layoutY="488.0" mnemonicParsing="false" onAction="#acceptPassword" prefHeight="25.0" prefWidth="99.0" text="Accept" />
          </children></AnchorPane>
   </items>
 </SplitPane>

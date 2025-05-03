@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import com.DBConnector;
 import com.PasswordHandling;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
 import java.net.URI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,10 +17,6 @@ import javafx.application.HostServices;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-///TODO: Potential changes
-///TODO: exit button, instead of only the "x"
-///TODO: an about button that opens up description and usage, or maybe the github page with read.me
 
 public class AppController {
 
@@ -76,7 +71,7 @@ public class AppController {
     @FXML
     private void aboutApp(ActionEvent e) {
         try {
-            URI uri = new URI("https://github.com/Kauketz?tab=repositories");
+            URI uri = new URI("https://github.com/Kauketz/pw_v3");
             hostServices.showDocument(uri.toString());
         } catch (Exception ex) {
             ex.printStackTrace();

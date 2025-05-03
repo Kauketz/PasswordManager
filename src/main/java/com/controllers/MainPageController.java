@@ -3,18 +3,13 @@ package com.controllers;
 import java.io.IOException;
 
 import com.DBConnector;
-import com.PasswordHandling;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class MainPageController {
@@ -28,6 +23,8 @@ public class MainPageController {
     private Button addBtn;
     @FXML
     private Button generatorBtn;
+    @FXML
+    private Button vaultBtn;
     @FXML
     private Label titleLabel;
 
@@ -76,6 +73,12 @@ public class MainPageController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Generator.fxml"));
             Parent root = loader.load();
+            GeneratorController generatorController = loader.getController();
+
+            Stage currentStage = (Stage) generatorBtn.getScene().getWindow();
+            generatorController.setMainPageStage(currentStage);
+            generatorController.setMaster(master);
+            generatorController.setMasterPassword(mPassword);
 
             Stage generatorStage = new Stage();
             generatorStage.setTitle("Password Generator");
@@ -90,7 +93,17 @@ public class MainPageController {
 
     @FXML
     private void closeAccount(ActionEvent e) {
+        try {
+            DBConnector conn = new DBConnector();
+            conn.deleteMaster(master, mPassword);
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/App.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) logOutBtn.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 }
