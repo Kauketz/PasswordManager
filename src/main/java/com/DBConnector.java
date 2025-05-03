@@ -10,9 +10,9 @@ import java.util.List;
 
 public class DBConnector {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/password_manager";
+    private static final String URL = "jdbc:postgresql://localhost:5432/password_manager"; // !DATABASE PORT + NAME HERE
     private static final String DB_USERNAME = "postgres";
-    private static final String DB_PASSWORD = "altaya";
+    private static final String DB_PASSWORD = "altaya"; // ! WRITE PASSWORD HERE
 
     public void addMaster(String newUsername, String newPassword) throws SQLException {
         if (doesUserExist(newUsername)) {
