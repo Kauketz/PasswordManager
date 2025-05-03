@@ -71,7 +71,7 @@ public class AppController {
     @FXML
     private void aboutApp(ActionEvent e) {
         try {
-            URI uri = new URI("https://github.com/Kauketz/pw_v3");
+            URI uri = new URI("https://github.com/Kauketz/PasswordManager");
             hostServices.showDocument(uri.toString());
         } catch (Exception ex) {
             ex.printStackTrace();
