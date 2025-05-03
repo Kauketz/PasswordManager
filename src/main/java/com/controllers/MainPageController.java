@@ -73,7 +73,19 @@ public class MainPageController {
 
     @FXML
     private void openGenerator(ActionEvent e) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Generator.fxml"));
+            Parent root = loader.load();
 
+            Stage generatorStage = new Stage();
+            generatorStage.setTitle("Password Generator");
+            generatorStage.setScene(new Scene(root));
+            generatorStage.setResizable(false);
+            generatorStage.show();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML

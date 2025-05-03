@@ -1,4 +1,4 @@
-#PASSWORD MANAGER PROJECT
+PASSWORD MANAGER PROJECT
 This is my password manager project, work in progess
 
 Images:
