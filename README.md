@@ -1,6 +1,6 @@
 # About
 
-I am a student in Cyber Security, and this is my basic password manager project.
+I am a student in Cyber Security, and this is my basic password manager project.  
 Technologies used: Java (openjdk 23.0.1 2024-10-15), JavaFX, PostgreSQL 17
 
 ### WARNING: You should NOT use this as a real password manager. There are much better and more secure options out there, such as [BitWarden](https://github.com/bitwarden)
