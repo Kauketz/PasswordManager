@@ -9,13 +9,13 @@ Technologies used: Java (openjdk 23.0.1 2024-10-15), JavaFX, PostgreSQL 17
 
 There are 4 reasons for why I wanted to make this project:
 
-1. Improve upon an earlier project.
+1. **Improve upon an earlier project**  
    I had actually written code for a password manager a year ago. But that one was really poor and I wanted to improve the project quality and my coding abilities.
-2. Learn Java
+2. **Learn Java**  
    I haven't used a lot of Java since I learned it for the first time a year ago. I wanted to brush up my skills, as well as improve and learn new things about the language.
-3. Database and SQL
+3. **Database and SQL**  
    I wanted to learn how I could connect my code to a PostgreSQL database and use SQL in Java to pass queries to insert as well as retrieve data.
-4. Implement basic cryptographic methods
+4. **Implement basic cryptographic methods**  
    The project uses cryptographic theory to hash and encrypt password. The first version of my password manager used a basic caesar cipher to encrypt not only the master user, but also the service logins.
    This implementation is a vast improvement to that.
 
